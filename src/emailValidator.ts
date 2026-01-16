@@ -1,20 +1,20 @@
 export function isValidEmail(email: string): boolean {
-  // c) aucun espace
+  // c) no spaces
   if (email.includes(" ")) return false;
 
-  // a) au moins un @ (et on force exactement un)
+  // a) at least one '@' (exactly one)
   const atIndex = email.indexOf("@");
   if (atIndex === -1) return false;
   if (email.indexOf("@", atIndex + 1) !== -1) return false;
 
-  // d) texte avant et après @
+  // d) text before and after '@'
   const localPart = email.slice(0, atIndex);
   const domainPart = email.slice(atIndex + 1);
   if (localPart.length === 0) return false;
   if (domainPart.length === 0) return false;
 
-  // b) au moins un point dans le domaine, pas en dernier caractère
-  // et pas en premier caractère du domaine (ex: a@.com)
+  // b) at least one dot in the domain, not as the last char,
+  // and not as the first char of the domain (e.g. a@.com)
   const dotIndex = domainPart.indexOf(".");
   if (dotIndex === -1) return false;
   if (dotIndex === 0) return false;
