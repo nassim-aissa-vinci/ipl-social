@@ -1,45 +1,45 @@
 import { isValidEmail } from "./emailValidator";
 
 describe("isValidEmail", () => {
-  test("valide: email simple", () => {
+  test("valid: simple email", () => {
     expect(isValidEmail("a@b.com")).toBe(true);
   });
 
-  test("invalide: pas de @", () => {
+  test("invalid: missing @", () => {
     expect(isValidEmail("abc.com")).toBe(false);
   });
 
-  test("invalide: espace", () => {
+  test("invalid: contains spaces", () => {
     expect(isValidEmail("a @b.com")).toBe(false);
     expect(isValidEmail("a@b .com")).toBe(false);
     expect(isValidEmail("a@b.com ")).toBe(false);
   });
 
-  test("invalide: rien avant @", () => {
+  test("invalid: missing local part (nothing before @)", () => {
     expect(isValidEmail("@b.com")).toBe(false);
   });
 
-  test("invalide: rien après @", () => {
+  test("invalid: missing domain part (nothing after @)", () => {
     expect(isValidEmail("a@")).toBe(false);
   });
 
-  test("invalide: domaine sans point", () => {
+  test("invalid: domain has no dot", () => {
     expect(isValidEmail("a@bcom")).toBe(false);
   });
 
-  test("invalide: point en dernier caractère", () => {
+  test("invalid: dot is the last character", () => {
     expect(isValidEmail("a@b.")).toBe(false);
   });
 
-  test("invalide: domaine commence par un point", () => {
+  test("invalid: domain starts with a dot", () => {
     expect(isValidEmail("a@.com")).toBe(false);
   });
 
-  test("invalide: plusieurs @", () => {
+  test("invalid: multiple @ characters", () => {
     expect(isValidEmail("a@@b.com")).toBe(false);
   });
 
-  test("valide: sous-domaine", () => {
+  test("valid: subdomain", () => {
     expect(isValidEmail("user@mail.domain.com")).toBe(true);
   });
 });
