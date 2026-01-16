@@ -1,19 +1,26 @@
 # IPL social
 
-## Informations
-- Nom : AISSA
-- Prénom : NASSIM
-- Email Vinci : nassim.aissa@student.vinci.be
+## Student information
+- Last name: AISSA
+- First name: NASSIM
+- VINCI email: nassim.aissa@student.vinci.be
 
-## URL du projet GitHub
+## GitHub project URL
 https://github.com/nassim-aissa-vinci/ipl-social
 
-## Explication du code
-Ce projet met en place une pipeline CI via GitHub Actions. Le code principal contient une fonction de
-validation d’email écrite en TypeScript, développée en TDD (tests d’abord). La pipeline exécute `npm run build`
-pour compiler TypeScript puis `npm test` pour lancer les tests Jest à chaque push/pull request sur `main`.
+## Code explanation
+This project demonstrates a basic DevOps CI setup using GitHub Actions. The main feature is a TypeScript
+email validation function developed using TDD (tests first). The CI pipeline runs automatically on every
+push or pull request to the `main` branch. It installs dependencies, compiles the TypeScript code
+(`npm run build`), and runs the Jest test suite (`npm test`).
 
-## Lancer les tests
+The email validator checks:
+- the presence of exactly one `@`,
+- no spaces,
+- text before and after `@`,
+- at least one dot `.` in the domain part (not as the last character).
+
+## Run tests
 ```bash
 npm test
 ```
