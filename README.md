@@ -24,3 +24,5 @@ The email validator checks:
 ```bash
 npm test
 ```
+## CI pipeline
+The workflow is defined in `.github/workflows/ci.yml` and runs the build + tests on `push` and `pull_request`.
